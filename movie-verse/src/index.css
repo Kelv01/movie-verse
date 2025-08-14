@@ -1,0 +1,9 @@
+@theme{
+    --color-raisingblack: #161925;
+    --color-xanthous: #e6af2e;
+}
+@import 'tailwindcss';
+
+:root{background: #242424;
+}
+
