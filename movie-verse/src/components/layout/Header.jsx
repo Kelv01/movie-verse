@@ -1,6 +1,8 @@
 import React from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
+import { CiSearch } from "react-icons/ci";
+import useSearchStore from "../utils/useSearchStore";
 
 function Header() {
   const navLinks = [
@@ -10,12 +12,25 @@ function Header() {
     { name: "Reviews", href: "Reviews" },
   ];
 
+  const { searchTerm, setSearchTerm, fetchMovies, loading } = useSearchStore();
+
+  const handleInput = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleSearch = () => {
+    if (searchTerm.trim() !== "") {
+      fetchMovies(searchTerm);
+    }
+  };
   return (
     <>
-      <nav className="flex justify-between w-full py-0.5">
-        <h1 className="text-white"> <Link to='/'>
-        <span className="text-xanthous">Movie</span>Verse</Link>
-          
+      <nav className="flex justify-between w-full py-6 p-8 ">
+        <h1 className="text-white">
+          {" "}
+          <Link to="/">
+            <span className="text-xanthous">Movie</span>Verse
+          </Link>
         </h1>
         <ul className="flex gap-8 text-white">
           {navLinks.map((link, idx) => (
@@ -24,7 +39,20 @@ function Header() {
             </li>
           ))}
         </ul>
-        <input type="search" name="search" id="search" placeholder="search" className="bg-white rounded-2xl p-1 "/>
+        <div className="relative">
+          <input
+          type="search"
+          name="search"
+          id="search"
+          placeholder="search"
+          value={searchTerm}
+          onChange={handleInput}
+          className="bg-white rounded-2xl p-1 border-2 border-xanthous "
+        />
+        <button onClick={handleSearch} disabled={loading}>
+          <CiSearch className="text-gray-500 text-2xl absolute right-3 bottom-4 -transform translate-y-1/2 cursor-pointer"/>
+        </button>
+        </div>
       </nav>
     </>
   );
