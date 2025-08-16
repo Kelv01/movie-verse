@@ -9,7 +9,7 @@ function Footer() {
     { name: "Reviews", href: "Reviews" },
   ];
 
-  const GenresLinks = [
+  const MovieGenres = [
     { name: "Action", href: "Action" },
     { name: "Comedy", href: "Comedy" },
     { name: "Drama", href: "Drama" },
@@ -22,14 +22,14 @@ function Footer() {
     <>
       <footer className="h-auto w-full bg-black md:flex-col sm:flex-col ">
         <div className="py-4 p-4 gap-4 md:flex-col sm:flex-col">
-          <div className="text-white grid grid-cols-1 p-2 md:grid-cols-3 gap-8 ">
+          <div className="text-white grid grid-cols-1 p-2 md:grid-cols-3 gap-8 justify-evenly ">
             <div className="md:flex-col">
               <h1 className="text-white">
                 <Link to="/">
                   <span className="text-xanthous">Movie</span>Verse
                 </Link>
               </h1>
-              <p className="pt-4 ">
+              <p className="pt-4 text-left">
                 Discover the latest blockbusters, <br />
                 timeless classics,{" "}
                 <span className="text-xanthous">
@@ -39,7 +39,7 @@ function Footer() {
               </p>
             </div>
 
-            <div>
+            <div className="ml-12.5 pl-12.5">
               <h2>Movies</h2>
               <ul className=" gap-8 text-white cursor-pointer pt-4">
                 {navLinks.map((link, idx) => (
@@ -50,10 +50,10 @@ function Footer() {
               </ul>
             </div>
 
-            <div>
+            <div className="ml-25 pl-25">
               <h2>Genres</h2>
               <ul className=" gap-8 text-white pt-4">
-                {GenresLinks.map((link, idx) => (
+                {MovieGenres.map((link, idx) => (
                   <li key={idx} className="hover:text-xanthous">
                     <Link to={link.href}>{link.name}</Link>
                   </li>

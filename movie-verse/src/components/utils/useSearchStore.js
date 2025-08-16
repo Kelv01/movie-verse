@@ -15,6 +15,7 @@ const useSearchStore = create((set) => ({
   fetchMovies: async (term) => {
     if (!term) {
       set({ movies: [], error: null });
+      return;
     }
     set({ loading: true, error: null });
 
@@ -22,7 +23,7 @@ const useSearchStore = create((set) => ({
       const res = await axios.get(
         `http://www.omdbapi.com/?apikey=${apiKey}&s=${term}`
       );
-      if (res.data.Resonse === "True") {
+      if (res.data.Response === "True") {
         set({ movies: res.data.Search || [], loading: false });
       } else {
         set({ movies: [], error: res.data.Error || "No results found", loading: false });
