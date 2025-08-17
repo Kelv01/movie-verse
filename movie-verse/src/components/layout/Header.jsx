@@ -6,7 +6,7 @@ import useSearchStore from "../utils/useSearchStore";
 
 function Header() {
   const navLinks = [
-    { name: "Now-playing", href: "Now Playing" },
+    { name: "Nowplaying", href: "Now Playing" },
     { name: "Upcoming Movies", href: "Upcoming Movies" },
     { name: "Genres", href: "Genres" },
     { name: "Reviews", href: "Reviews" },

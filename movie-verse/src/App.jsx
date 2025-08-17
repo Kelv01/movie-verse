@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/layout/Header";
 import HomePage from "./components/HomePage";
 import Footer from "./components/layout/Footer";
@@ -5,7 +6,7 @@ import NowPlaying from "./components/NowPlaying";
 import UpcomingMovies from "./components/UpcomingMovies";
 import Genres from "./components/Genres";
 import Reviews from "./components/Reviews";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MovieDetails from "./components/MovieDetails";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/movie/:id" element={<MovieDetails />} />
           <Route path="/Now-Playing" element={<NowPlaying />} />
           <Route path="/Upcoming Movies" element={<UpcomingMovies />} />
           <Route path="/Genres" element={<Genres />} />

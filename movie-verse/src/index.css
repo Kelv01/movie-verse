@@ -1,6 +1,7 @@
 @theme {
   --color-raisingblack: #161925;
   --color-xanthous: #e6af2e;
+  --color-skyblue: #78c0e0;
 }
 @import "tailwindcss";
 

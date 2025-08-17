@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 function Reviews() {
   return (
-    <div>Reviews</div>
-  )
+    <div>
+      <h1 className="text-white text-center font-bold"> Coming Soon</h1>
+    </div>
+  );
 }
 
-export default Reviews
+export default Reviews;

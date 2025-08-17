@@ -12,24 +12,50 @@ const useSearchStore = create((set) => ({
   error: null,
 
   setSearchTerm: (term) => set({ searchTerm: term }),
-  fetchMovies: async (term) => {
+  fetchMovies: async (term, returnOnly = false) => {
     if (!term) {
-      set({ movies: [], error: null });
-      return;
+      if (!returnOnly) {
+        set({ movies: [], error: null });
+      }
+      return [];
     }
-    set({ loading: true, error: null });
+    if (!returnOnly) {
+      set({ loading: true, error: null });
+    }
 
     try {
       const res = await axios.get(
         `http://www.omdbapi.com/?apikey=${apiKey}&s=${term}`
       );
+
       if (res.data.Response === "True") {
-        set({ movies: res.data.Search || [], loading: false });
+        const results = res.data.Search || [];
+        // set({ movies: res.data.Search || [] });
+
+        if (returnOnly) {
+          return results;
+        } else {
+          set({ movies: results, loading: false });
+        }
       } else {
-        set({ movies: [], error: res.data.Error || "No results found", loading: false });
+        if (returnOnly) {
+          return [];
+        } else {
+          set({
+            movies: [],
+            error: res.data.Error || "No results found",
+            loading: false,
+          });
+        }
       }
     } catch (error) {
       console.error("error fetching movies:", error);
+
+      if (returnOnly) {
+        return [];
+      } else {
+        set({ error: "Error fetching movies", loading: false });
+      }
     }
   },
 }));

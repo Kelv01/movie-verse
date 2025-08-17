@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 function UpcomingMovies() {
   return (
-    <div>UpcomingMovies</div>
-  )
+    <div>
+      <h1 className="text-white text-center font-bold"> Coming Soon</h1>
+    </div>
+  );
 }
 
-export default UpcomingMovies
+export default UpcomingMovies;
