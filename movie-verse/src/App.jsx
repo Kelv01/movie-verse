@@ -1,25 +1,16 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./components/layout/Header";
-import HomePage from "./components/HomePage";
-import Footer from "./components/layout/Footer";
-import NowPlaying from "./components/NowPlaying";
-import UpcomingMovies from "./components/UpcomingMovies";
-import Genres from "./components/Genres";
-import Reviews from "./components/Reviews";
-import MovieDetails from "./components/MovieDetails";
+
+import HomePage from "./pages/HomePage";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
+        <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/movie/:id" element={<MovieDetails />} />
-          <Route path="/Now-Playing" element={<NowPlaying />} />
-          <Route path="/Upcoming Movies" element={<UpcomingMovies />} />
-          <Route path="/Genres" element={<Genres />} />
-          <Route path="/Reviews" element={<Reviews />} />
         </Routes>
         <Footer />
       </BrowserRouter>

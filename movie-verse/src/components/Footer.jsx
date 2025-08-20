@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   const navLinks = [
-    { name: "Now playing", href: "Now Playing" },
-    { name: "Upcoming Movies", href: "Upcoming Movies" },
-    { name: "Genres", href: "Genres" },
-    { name: "Reviews", href: "Reviews" },
+    { name: "Popular", href: "popular" },
+    { name: "Upcoming", href: "Upcoming" },
+    { name: "Genres", href: "Genres" }
+   
   ];
 
   const MovieGenres = [
