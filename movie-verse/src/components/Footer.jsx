@@ -20,16 +20,16 @@ function Footer() {
 
   return (
     <>
-      <footer className="h-auto w-full bg-black md:flex-col sm:flex-col ">
-        <div className="py-4 p-4 gap-4 md:flex-col sm:flex-col">
-          <div className="text-white grid grid-cols-1 p-2 md:grid-cols-3 gap-8 justify-evenly ">
-            <div className="md:flex-col">
-              <h1 className="text-white">
+      <footer className="w-full bg-black px-6 md:px-20 py-10 ">
+        <div className="max-w-6xl mx-auto py-8 px-6">
+          <div className="text-white grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left md:gap-20 lg:place-items-center-safe">
+            <div>
+              <h1 className="text-white text-2xl font-bold font-serif">
                 <Link to="/">
                   <span className="text-xanthous">Movie</span>Verse
                 </Link>
               </h1>
-              <p className="pt-4 text-left">
+              <p className="pt-4 text-sm leading-relaxed font-mozzila text-center md:text-left ">
                 Discover the latest blockbusters, <br />
                 timeless classics,{" "}
                 <span className="text-xanthous">
@@ -39,9 +39,9 @@ function Footer() {
               </p>
             </div>
 
-            <div className="ml-12.5 pl-12.5">
-              <h2>Movies</h2>
-              <ul className=" gap-8 text-white cursor-pointer pt-4">
+            <div className="font-serif">
+              <h2 className="text-lg font-bold">Movies</h2>
+              <ul className=" space-y-2 text-white cursor-pointer pt-4">
                 {navLinks.map((link, idx) => (
                   <li key={idx} className="hover:text-xanthous">
                     <Link to={link.href}>{link.name}</Link>
@@ -50,9 +50,9 @@ function Footer() {
               </ul>
             </div>
 
-            <div className="ml-25 pl-25">
-              <h2>Genres</h2>
-              <ul className=" gap-8 text-white pt-4">
+            <div className="font-serif">
+              <h2 className="text-lg font-bold">Genres</h2>
+              <ul className=" space-y-2 text-white pt-4">
                 {MovieGenres.map((link, idx) => (
                   <li key={idx} className="hover:text-xanthous">
                     <Link to={link.href}>{link.name}</Link>
@@ -61,13 +61,13 @@ function Footer() {
               </ul>
             </div>
           </div>
-          <hr className="border-raisingblack w-full my-4" />
-          <div className="text-white flex items-center justify-between gap4 p-4 flex-wrap">
+          <hr className="border-raisingblack  my-6" />
+          <div className="text-white font-serif flex flex-col md:flex-row items-center justify-between gap-4">
             <p>
               &copy; {currentYear} <span className="text-xanthous">Movie</span>
               Verse
             </p>
-            <div className="flex gap-4 cursor-pointer">
+            <div className="flex gap-6 text-sm  cursor-pointer">
               <p>Terms</p>
               <p>Privacy</p>
               <p>Cookies</p>

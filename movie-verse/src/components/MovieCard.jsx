@@ -3,7 +3,7 @@ import { IoStar } from "react-icons/io5";
 
 function MovieCard({ movie }) {
   return (
-    <div className="bg-gray-800 h-full rounded-lg overflow-hidden hover:scale-105 transition-transform duration-200 hover:border hover:border-xanthous">
+    <div className="bg-yinminblue h-full rounded-lg overflow-hidden hover:scale-105 transition-transform duration-200 hover:border hover:border-xanthous">
       
         <img
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
