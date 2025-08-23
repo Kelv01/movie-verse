@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 import { MdOutlineClose } from "react-icons/md";
+import SearchBar from "./SearchBar";
 
 function Navbar() {
-  const [showSearch, setShowSearch] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+  // const [showSearch, setShowSearch] = useState(false);
+  // const [searchTerm, setSearchTerm] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
@@ -16,13 +17,13 @@ function Navbar() {
     { name: "Genres", href: "/genres" },
   ];
 
-  const handleSearchToggle = () => {
-    setShowSearch((prev) => !prev);
-  };
+  // const handleSearchToggle = () => {
+  //   setShowSearch((prev) => !prev);
+  // };
 
-  const updateSearchTerm = (e) => {
-    setSearchTerm(e.target.value);
-  };
+  // const updateSearchTerm = (e) => {
+  //   setSearchTerm(e.target.value);
+  // };
 
   return (
     <>
@@ -41,8 +42,9 @@ function Navbar() {
           ))}
         </ul>
 
+          <SearchBar />
         {/* Search button and field start */}
-        <div className="relative flex items-center">
+        {/* <div className="relative flex items-center">
           {showSearch && (
             <input
               type="search"
@@ -57,7 +59,7 @@ function Navbar() {
           <button onClick={handleSearchToggle} className="ml-2">
             <CiSearch className="text-xanthous text-2xl  cursor-pointer" />
           </button>
-        </div>
+        </div> */}
         {/* Search button and field end */}
 
         {/* Hamburger icon for mobile */}

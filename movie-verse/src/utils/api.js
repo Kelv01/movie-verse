@@ -3,7 +3,6 @@ import axios from "axios";
 
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
-
 const api = axios.create({
   baseURL: BASE_URL,
   params: {
@@ -19,4 +18,13 @@ export async function fetchFromTMDB(endpoint, params = {}) {
     console.error("TMDB API Error", error);
   }
 }
+export async function searchMovies(query, page = 1) {
+  if (!query) {
+    return null;
+  } else {
+    const data = await fetchFromTMDB("/search/movie", { query, page });
+    return data;
+  }
+}
+
 // export default api;
