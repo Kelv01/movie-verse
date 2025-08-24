@@ -1,82 +1,69 @@
 # MovieVerse
 
-MovieVerse is a modern React application for discovering movies, exploring genres, and reading reviews. Powered by the [TMDb API](https://www.themoviedb.org/documentation/api), it features a clean UI, search functionality, and responsive design with Tailwind CSS.
+MovieVerse is a modern React application for discovering movies, exploring genres, and reading reviews. It uses the [TMDb API](https://www.themoviedb.org/documentation/api) to provide up-to-date movie data and trending titles. Built with Vite, Tailwind CSS, Zustand, and React Router.
 
 ![Desktop Theme Preview](./Desktop-theme.png)
 
 ## Features
 
-- 🔍 **Search** for movies by title
-- 🎬 Browse **Popular**,  and **Upcoming Movies**
-- 🎭 Explore by **Genres**
-- 📝 Read **Movie Details**
-- Responsive layout and modern design
+- Search for movies by title
+- Browse Popular and Upcoming movies
+- Explore by Genres
+- View Movie Details
+- Responsive and modern UI
+
+## Navigation
+
+- **Home**
+- **Popular**
+- **Upcoming**
+- **Genres**
 
 ## Getting Started
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v16+ recommended)
+- [Node.js](https://nodejs.org/) (v16+)
 - [npm](https://www.npmjs.com/)
 
 ### Installation
 
 1. **Clone the repository:**
-
    ```sh
    git clone https://github.com/yourusername/movie-verse.git
    cd movie-verse
    ```
 
 2. **Install dependencies:**
-
    ```sh
    npm install
    ```
 
-3. **Set up environment variables:**
-
-   Create a `.env` file in the root directory with the following content:
-
-   ```
-   VITE_TMDB_API_KEY=your_tmdb_api_key
-   ```
-
-   Replace `your_tmdb_api_key` with your [TMDb API key](https://www.themoviedb.org/settings/api).
+3. **Set up TMDb API Key:**
+   - Create a `.env` file in the root directory:
+     ```
+     VITE_TMDB_API_KEY=your_tmdb_api_key
+     ```
+   - Replace `your_tmdb_api_key` with your [TMDb API key](https://www.themoviedb.org/settings/api).
 
 4. **Start the development server:**
-
    ```sh
    npm run dev
    ```
-
-   The app will be available at [http://localhost:5173](http://localhost:5173) (or as indicated in your terminal).
+   The app will be available at [http://localhost:5173](http://localhost:5173).
 
 ## Project Structure
 
-- `src/components/` – React components (UI, layout)
-- `src/pages/` – Page components (Home, Genres, Details, etc.)
+- `src/components/` – UI and layout components
+- `src/pages/` – Page components (Home, Popular, Upcoming, Genres, Details)
 - `src/store/` – Zustand stores for state management
 - `src/utils/` – API utilities and constants
 - `src/assets/` – Static assets
-- `public/` – Public files (e.g., favicon)
-- `Desktop-theme.png` – Desktop UI preview
 
-## Tech Stack
+## API Integration
 
-- [React](https://react.dev/)
-- [Vite](https://vitejs.dev/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Zustand](https://zustand-demo.pmnd.rs/)
-- [React Router](https://reactrouter.com/)
-- [TMDb API](https://www.themoviedb.org/documentation/api)
+All movie data is fetched from the [TMDb API](https://www.themoviedb.org/documentation/api). The API key is loaded from your `.env` file and used in the API utility functions.
 
 ## License
 
-This project is licensed under the MIT License.
-
----
-
-**Desktop Preview:**
-
-![Desktop Theme](./Desktop-theme.png)
+MIT License

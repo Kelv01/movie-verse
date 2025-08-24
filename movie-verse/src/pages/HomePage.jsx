@@ -1,46 +1,55 @@
-import React from "react";
-import useMoviesStore from "../store/useMoviesStore";
-import useSearchStore from "../store/useSearchStore";
+import React, { useEffect } from "react";
 import Loader from "../components/Loader";
-import { useEffect } from "react";
-import MovieCard from "../components/MovieCard";
+import useMovieStore from "../store/useMoviesStore";
+import useSearchStore from "../store/useSearchStore";
+import MovieRow from "../components/MovieRow";
 import HeroSection from "../components/HeroSection";
 
 function HomePage() {
-  const { movies, loading, error, fetchPopularMovies } = useMoviesStore();
-  const { results, searchTerm } = useSearchStore();
+  const {
+    popular,
+    trending,
+    tvshows,
+    loading,
+    error,
+    fetchPopularMovies,
+    fetchTrendingMovies,
+    fetchTVShows,
+  } = useMovieStore();
+
+  const { results, searchTerm, loading: searchLoading } = useSearchStore();
 
   useEffect(() => {
-    fetchPopularMovies();
-  }, [fetchPopularMovies, searchTerm]);
+    if (!searchTerm) {
+      fetchPopularMovies();
+      fetchTrendingMovies();
+      fetchTVShows();
+    }
+  }, [searchTerm, fetchPopularMovies, fetchTrendingMovies, fetchTVShows]);
 
-  // if (loading) return <p className="text-white p-6">loading...</p>;
-  if (error) return <p className="text-white p-6">Error: {error}</p>;
-
-  const dataToRender =  searchTerm ? results : movies;
+  if (loading || searchLoading) return <Loader />;
+  if (error) return <p className="text-white p-6">{error}</p>;
 
   return (
     <div>
       <HeroSection />
-      <div className="p-6 text-white">
-        <h1 className="text-2xl font-bold mb-4 font-serif">{searchTerm ? "Search Results" : "Popular Movies"}</h1>
-        {loading ? (
-          <Loader />
-        ) : (
-          <ul className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-            {dataToRender.map((movie) => (
-              <li
-                key={movie.id}
-                className="bg-yinminblue shadow-lg shadow-glaucous/20  rounded font-roboto"
-              >
-                <MovieCard movie={movie} />
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+
+      {searchTerm ? (
+        <div className="p-6 text-white">
+          {results.length > 0 ? (
+            <MovieRow title="Search Results" movies={results} />
+          ) : (
+            <p className="text-white font-mozzila">No results found</p>
+          )}
+        </div>
+      ) : (
+        <>
+          <MovieRow title="Popular Movies" movies={popular} />
+          <MovieRow title="Trending" movies={trending} />
+          <MovieRow title="TV Shows" movies={tvshows} />
+        </>
+      )}
     </div>
   );
 }
-
 export default HomePage;

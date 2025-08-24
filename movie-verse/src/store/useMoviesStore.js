@@ -1,9 +1,7 @@
 import { create } from "zustand";
 import { fetchFromTMDB } from "../utils/api";
 
-import React from "react";
-
-const useMoviesStore = create((set) => ({
+const useMovieStore = create((set) => ({
   movies: [],
   popular: [],
   trending: [],
@@ -11,14 +9,25 @@ const useMoviesStore = create((set) => ({
   loading: false,
   error: null,
 
+  fetchMovies: async () => {
+    set({ loading: true });
+    try {
+      const data = await fetchFromTMDB("/movie/now_playing");
+      set({ movies: data.results, loading: false });
+    } catch (error) {
+      console.error("Failed to fetch movies", error);
+      set({ loading: false, error });
+    }
+  },
+
   fetchPopularMovies: async () => {
     set({ loading: true });
     try {
       const data = await fetchFromTMDB("/movie/popular");
-      set({ movies: data.results, loading: false });
+      set({ popular: data.results, loading: false });
     } catch (error) {
-      console.error("Failed to fetch movies", error)
-      set({loading: false });
+      console.error("Failed to fetch popular movies", error);
+      set({ loading: false, error });
     }
   },
 
@@ -26,24 +35,23 @@ const useMoviesStore = create((set) => ({
     set({ loading: true });
     try {
       const data = await fetchFromTMDB("/trending/movie/day");
-      set({ movies: data.results, loading: false });
+      set({ trending: data.results, loading: false });
     } catch (error) {
-      console.error("Failed to  fetch trending movies", error)
-      set({loading: false });
+      console.error("Failed to fetch trending movies", error);
+      set({ loading: false, error });
     }
   },
 
-  fetchTVShows : async () => {
-    set({loading: true})
-
+  fetchTVShows: async () => {
+    set({ loading: true });
     try {
-      const data = await fetchFromTMDB("/tv/popular")
-      set({tvshows: data.results, loading : false})
+      const data = await fetchFromTMDB("/tv/popular");
+      set({ tvshows: data.results, loading: false });
     } catch (error) {
-      console.error("Failed to Fetch Tv shows", error )
-      set({loading : false})
+      console.error("Failed to fetch TV shows ", error);
+      set({ loading: false, error });
     }
-  }
+  },
 }));
 
-export default useMoviesStore;
+export default useMovieStore;
