@@ -2,7 +2,6 @@
 
 MovieVerse is a modern React application for discovering movies, exploring genres, and reading reviews. It uses the [TMDb API](https://www.themoviedb.org/documentation/api) to provide up-to-date movie data and trending titles. Built with Vite, Tailwind CSS, Zustand, and React Router.
 
-![Desktop Theme Preview](./theme.png)
 
 ## Features
 
