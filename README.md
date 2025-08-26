@@ -57,7 +57,8 @@ MovieVerse is a modern React application for discovering movies, exploring genre
 
 ## Project Structure
 
-- `src/components/` – UI and layout components
+- `src/components/` – UI and reusable components
+- `src/layout/` – Layout components (e.g., Navbar, Footer, wrappers)
 - `src/pages/` – Page components (Home, Popular, Upcoming, Genres, Details)
 - `src/store/` – Zustand stores for state management
 - `src/utils/` – API utilities and constants
@@ -71,3 +72,7 @@ All movie data is fetched from the [TMDb API](https://www.themoviedb.org/documen
 
 This project follows a custom theme designed in Figma.  
 View the Figma design guide here: [Frontend Capstone Figma](https://www.figma.com/design/MWrQmDI8DYsrMAPE29DKsM/Frontend-Capstone?node-id=3-352&t=xceWZgd7i9WypEZQ-1)
+
+## License
+
+MIT License
