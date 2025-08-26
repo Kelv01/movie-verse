@@ -3,24 +3,24 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   const navLinks = [
-    { name: "Popular", href: "popular" },
-    { name: "Upcoming", href: "Upcoming" },
-    { name: "Genres", href: "Genres" }
+    { name: "Popular", href: "/popular" },
+    { name: "Upcoming", href: "/upcoming" },
+    { name: "Genres", href: "/genres" }
    
   ];
 
   const MovieGenres = [
-    { name: "Action", href: "Action" },
-    { name: "Comedy", href: "Comedy" },
-    { name: "Drama", href: "Drama" },
-    { name: "Horror", href: "Horror" },
+    { name: "Action", href: "/action" },
+    { name: "Comedy", href: "/comedy" },
+    { name: "Drama", href: "/drama" },
+    { name: "Horror", href: "/horror" },
   ];
   const currentYear = new Date().getFullYear();
   
 
   return (
     <>
-      <footer className="w-full bg-black px-6 md:px-20 py-10 ">
+      <footer className="w-full bg-black px-6 md:px-20 py-10  ">
         <div className="max-w-6xl mx-auto py-8 px-6">
           <div className="text-white grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left md:gap-20 lg:place-items-center-safe">
             <div>

@@ -36,7 +36,7 @@ function Navbar() {
 
         <ul className="hidden md:flex gap-8 text-white">
           {navLinks.map((link, idx) => (
-            <li key={idx}>
+            <li key={idx} className="hover:text-xanthous">
               <Link to={link.href}>{link.name}</Link>
             </li>
           ))}
