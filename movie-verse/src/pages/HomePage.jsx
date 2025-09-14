@@ -4,6 +4,7 @@ import useMovieStore from "../store/useMoviesStore";
 import useSearchStore from "../store/useSearchStore";
 import MovieRow from "../components/MovieRow";
 import HeroSection from "../components/HeroSection";
+import MovieDetails from "./MovieDetails";
 
 function HomePage() {
   const {
@@ -15,6 +16,9 @@ function HomePage() {
     fetchPopularMovies,
     fetchTrendingMovies,
     fetchTVShows,
+    selectedMovieId,
+    setSelectedMovieId,
+    clearSelectedMovie,
   } = useMovieStore();
 
   const { results, searchTerm, loading: searchLoading } = useSearchStore();
@@ -27,27 +31,65 @@ function HomePage() {
     }
   }, [searchTerm, fetchPopularMovies, fetchTrendingMovies, fetchTVShows]);
 
-  if (loading || searchLoading) return <Loader />;
-  if (error) return <p className="text-white p-6">{error}</p>;
-
   return (
     <div>
       <HeroSection />
 
       {searchTerm ? (
         <div className="p-6 text-white">
-          {results.length > 0 ? (
-            <MovieRow title="Search Results" movies={results} />
+          {searchLoading ? (
+            <Loader />
+          ) : results.length > 0 ? (
+            <MovieRow
+              title="Search Results"
+              movies={results}
+              onSelectMovie={setSelectedMovieId}
+            />
           ) : (
             <p className="text-white font-mozzila">No results found</p>
           )}
         </div>
       ) : (
         <>
-          <MovieRow title="Popular Movies" movies={popular} />
-          <MovieRow title="Trending" movies={trending} />
-          <MovieRow title="TV Shows" movies={tvshows} />
+          {loading.popular ? (
+            <Loader />
+          ) : error.popular ? (
+            <p className="text-white p-6">{error.popular}</p>
+          ) : (
+            <MovieRow
+              title="Popular Movies"
+              movies={popular}
+              onSelectMovie={setSelectedMovieId}
+            />
+          )}
+
+          {loading.trending ? (
+            <Loader />
+          ) : error.trending ? (
+            <p className="text-white p-6">{error.trending}</p>
+          ) : (
+            <MovieRow
+              title="Trending"
+              movies={trending}
+              onSelectMovie={setSelectedMovieId}
+            />
+          )}
+
+          {loading.tvshows ? (
+            <Loader />
+          ) : error.tvshows ? (
+            <p className="text-white p-6">{error.tvshows}</p>
+          ) : (
+            <MovieRow
+              title="TV Shows"
+              movies={tvshows}
+              onSelectMovie={setSelectedMovieId}
+            />
+          )}
         </>
+      )}
+      {selectedMovieId && (
+        <MovieDetails movieId={selectedMovieId} onClose={clearSelectedMovie} />
       )}
     </div>
   );
