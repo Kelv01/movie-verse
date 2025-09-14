@@ -101,7 +101,7 @@ function MovieDetails({ movieId, onClose }) {
                 hovbg="bg-xanthouse/80"
                 onClick={() =>
                   window.open(
-                    `https:www.youtube.com/watch?v=${trailerKey}`,
+                    `https://www.youtube.com/watch?v=${trailerKey}`,
                     "_blank"
                   )
                 }
