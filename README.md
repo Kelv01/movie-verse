@@ -72,6 +72,4 @@ All movie data is fetched from the [TMDb API](https://www.themoviedb.org/documen
 This project follows a custom theme designed in Figma.  
 View the Figma design guide here: [Frontend Capstone Figma](https://www.figma.com/design/MWrQmDI8DYsrMAPE29DKsM/Frontend-Capstone?node-id=3-352&t=xceWZgd7i9WypEZQ-1)
 
-## License
 
-MIT License
